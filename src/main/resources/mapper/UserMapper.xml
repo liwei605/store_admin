@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.store_admin.mapper.UserMapper">
+    <resultMap id="UserEntityMap" type="com.cqu.store_admin.entity.User">
+        <id column="uid" property="uid"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="username" property="username"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="avatar" property="avatar"/>
+
+        <result column="created_user" property="createdUser"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+
+    <!-- 返回所有用户的信息：User findAllUser() -->
+    <select id="findAllUser" resultMap="UserEntityMap" >
+        SELECT
+            *
+        FROM
+            store.t_user
+    </select>
+
+    <select id="getuserCount" resultMap="UserEntityMap" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            store.t_user
+
+    </select>
+
+</mapper>
