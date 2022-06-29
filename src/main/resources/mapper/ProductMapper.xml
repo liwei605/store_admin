@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.store_admin.mapper.ProductMapper">
+    <resultMap id="ProductEntityMap" type="com.cqu.store_admin.entity.Product">
+        <id column="id" property="id"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="item_type" property="itemType"/>
+        <result column="sell_point" property="sellPoint"/>
+        <result column="num" property="num"/>
+        <result column="price" property="price"/>
+
+        <result column="image" property="image"/>
+        <result column="STATUS" property="status"/>
+        <result column="priority" property="priority"/>
+
+        <result column="created_user" property="createdUser"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <!-- 返回所有用户的信息：Product findAllProduct() -->
+    <select id="findAllProduct" resultMap="ProductEntityMap" >
+        SELECT
+            *
+        FROM
+            store.t_product
+    </select>
+</mapper>

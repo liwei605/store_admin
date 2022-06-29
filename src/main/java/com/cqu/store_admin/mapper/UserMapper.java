@@ -1,10 +1,7 @@
 package com.cqu.store_admin.mapper;
 
 import com.cqu.store_admin.entity.User;
-import org.apache.ibatis.annotations.Param;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.Date;
 import java.util.List;
 
 /**
