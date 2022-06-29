@@ -18,5 +18,8 @@ public class UserServiceTest {
         System.err.println(userService.findAllUser());
     }
 
-
+    @Test
+    public void updateUser(){
+        System.err.println(userService.updateUser("1231@qq.com","0","123",11));
+    }
 }

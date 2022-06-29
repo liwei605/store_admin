@@ -9,4 +9,6 @@ import java.util.List;
 public interface IUserService {
 
     DataVO<UserVO> findAllUser();
+
+    Integer updateUser(String email,String gender,String phone,Integer uid);
 }

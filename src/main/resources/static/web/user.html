@@ -22,7 +22,7 @@
     </div>
 </script>
 
-<script type="text/html" id="barDemo">
+<script type="text/html" id="barDemo" >
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -52,11 +52,11 @@
                 ,{field:'uid', title:'用户ID', width:80, fixed: 'left', sort: true}
                 ,{field:'username', title:'用户名', width:120, edit: 'text'}
                 ,{field:'password', title:'密码', width:120, edit: 'text'}
-                ,{field:'email', title:'邮箱', width:150, edit: 'text', templet: function(res){
+                ,{field:'email', title:'邮箱', width:150, edit: 'text', style:'cursor: pointer;', templet: function(res){
                         return '<em>'+ res.email +'</em>'
                     }}
-                ,{field:'gender', title:'性别', width:80, edit: 'text', sort: true}
-                ,{field:'phone', title:'电话', width:100}
+                ,{field:'gender', title:'性别', width:80, edit: 'text', sort: true, style:'cursor: pointer;'}
+                ,{field:'phone', title:'电话', width:100, edit: 'text',style:'cursor: pointer;'}
                 ,{field:'salt', title:'盐值'}
                 // ,{field:'experience', title:'积分', width:80, sort: true}
                 ,{field:'avatar', title:'头像路径', width:120}
@@ -68,6 +68,8 @@
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
             ]]
             ,page: true
+
+
         });
 
         //头工具栏事件
@@ -93,8 +95,6 @@
             }
         });
 
-
-
         //监听行工具事件
         table.on('tool(test)', function(obj){
             var data = obj.data;
@@ -108,29 +108,29 @@
                 });
             } else if(obj.event === 'edit'){
                 layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                // 这里一般是发送修改的Ajax请求
+                $.ajax({
+                    url: "/store_admin/users/update_user",
+                    type: "POST",
+                    data: {
+                        "uid": data.uid,
+                        "phone":data.phone,
+                        "email":data.email
+                    },
+                    dataType: "JSON",
+                    success: function (json) {
+                        if (json.state == 200) {
+                            alert("用户"+data.uid+"信息修改成功");
+                        } else {
+                            alert("用户"+data.uid+"信息修改失败！error");
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("您的登录信息已经过期，请重新登录！HTTP响应码：" + xhr.status);
+                    }
+                });
             }
 
-            //
-            // $.ajax({
-            //     url: "/carts/add_to_cart",
-            //     type: "POST",
-            //     data: {
-            //         "pid": id,
-            //         "amount": $("#num").val()
-            //     },
-            //     dataType: "JSON",
-            //     success: function (json) {
-            //         if (json.state == 200) {
-            //             alert("增加成功！");
-            //         } else {
-            //             alert("增加失败！" + json.message);
-            //         }
-            //     },
-            //     error: function (xhr) {
-            //         alert("您的登录信息已经过期，请重新登录！HTTP响应码：" + xhr.status);
-            //         location.href = "login.html";
-            //     }
-            // });
         });
 
 

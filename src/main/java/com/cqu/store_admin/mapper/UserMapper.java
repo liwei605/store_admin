@@ -17,4 +17,7 @@ public interface UserMapper {
 
     //获取用户数量
     Integer getuserCount();
+
+    //更新用户信息
+    Integer updateUser(String email,String gender,String phone,Integer uid);
  }

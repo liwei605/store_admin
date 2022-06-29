@@ -27,4 +27,11 @@ public class UserMapperTest {
         Integer num= userMapper.findAllUser().size();
         System.err.println(num);
     }
+
+    @Test
+    public void updateUser() {
+        Integer num= userMapper.updateUser("2499280864@qq.com","1","123123123123",11);
+        System.err.println(num);
+
+    }
 }

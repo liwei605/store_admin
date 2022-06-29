@@ -38,4 +38,10 @@ public class UserServiceimpl implements IUserService {
        return  dataVO;
     }
 
+    @Override
+    public Integer updateUser(String email, String gender, String phone, Integer uid) {
+        Integer row=  userMapper.updateUser(email,gender,phone,uid);
+        return row;
+    }
+
 }

@@ -37,4 +37,15 @@
 
     </select>
 
+
+    <update id="updateUser">
+        UPDATE
+            store.t_user
+        SET
+            store.t_user.email = #{email},
+            store.t_user.gender = #{gender},
+            store.t_user.phone = #{phone}
+        WHERE
+            uid = #{uid}
+    </update>
 </mapper>
