@@ -28,4 +28,30 @@
         FROM
             store.t_product
     </select>
+
+<!--    Integer updateproducts(Integer id,-->
+<!--    String itemType,-->
+<!--    String title,-->
+<!--    String sellPoint,-->
+<!--    Long price,-->
+<!--    Integer num,-->
+<!--    String image,-->
+<!--    Integer status,-->
+<!--    Integer priority);-->
+    <!-- 返回所有用户的信息：Product findAllProduct() -->
+    <update id="updateproducts"  >
+        UPDATE
+            store.t_product
+        SET
+            store.t_product.item_type = #{itemType},
+            store.t_product.title = #{title},
+            store.t_product.sell_point = #{sellPoint},
+            store.t_product.price = #{price},
+            store.t_product.num = #{num},
+            store.t_product.image = #{image},
+            store.t_product.status = #{status},
+            store.t_product.priority = #{priority}
+        WHERE
+            id = #{id}
+    </update>
 </mapper>

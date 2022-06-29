@@ -37,7 +37,7 @@
 
         table.render({
             elem: '#test'
-            ,url:'/store_admin/products/show_products'
+            ,url:'/products/show_products'
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
@@ -100,6 +100,15 @@
             }
         });
 
+        // String id,
+        //     String itemType,
+        //     String title,
+        //     String sellPoint,
+        //     Long price,
+        //     Integer num,
+        //     String image,
+        //     Integer status,
+        //     Integer priority
         //监听行工具事件
         table.on('tool(test)', function(obj){
             var data = obj.data;
@@ -113,27 +122,33 @@
                 });
             } else if(obj.event === 'edit'){
                 layer.alert('编辑行：<br>'+ JSON.stringify(data))
-                // 这里一般是发送修改的Ajax请求
-                // $.ajax({
-                //     url: "/store_admin/users/update_user",
-                //     type: "POST",
-                //     data: {
-                //         "uid": data.uid,
-                //         "phone":data.phone,
-                //         "email":data.email
-                //     },
-                //     dataType: "JSON",
-                //     success: function (json) {
-                //         if (json.state == 200) {
-                //             alert("用户"+data.uid+"信息修改成功");
-                //         } else {
-                //             alert("用户"+data.uid+"信息修改失败！error");
-                //         }
-                //     },
-                //     error: function (xhr) {
-                //         alert("您的登录信息已经过期，请重新登录！HTTP响应码：" + xhr.status);
-                //     }
-                // });
+                //这里一般是发送修改的Ajax请求
+                $.ajax({
+                    url: "/products/update_products",
+                    type: "POST",
+                    data: {
+                        "id": data.id,
+                        "itemType":data.itemType,
+                        "title":data.title,
+                        "sellPoint":data.sellPoint,
+                        "price":data.price,
+                        "num":data.num,
+                        "image":data.image,
+                        "status":data.status,
+                        "priority":data.priority
+                    },
+                    dataType: "JSON",
+                    success: function (json) {
+                        if (json.state == 200) {
+                            alert("商品"+data.id+"信息修改成功");
+                        } else {
+                            alert("商品"+data.id+"信息修改失败！error");
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("您的登录信息已经过期，请重新登录！HTTP响应码：" + xhr.status);
+                    }
+                });
             }
 
         });

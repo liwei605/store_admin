@@ -39,7 +39,7 @@
 
         table.render({
             elem: '#test'
-            ,url:'/store_admin/users/show_user'
+            ,url:'/users/show_user'
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
@@ -110,7 +110,7 @@
                 layer.alert('编辑行：<br>'+ JSON.stringify(data))
                 // 这里一般是发送修改的Ajax请求
                 $.ajax({
-                    url: "/store_admin/users/update_user",
+                    url: "/users/update_user",
                     type: "POST",
                     data: {
                         "uid": data.uid,

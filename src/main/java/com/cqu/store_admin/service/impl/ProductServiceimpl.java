@@ -39,6 +39,29 @@ public class ProductServiceimpl implements IProductService {
         return  dataVO;
     }
 
+//    <!--    Integer updateproducts(Integer id,-->
+//            <!--    String itemType,-->
+//                                           <!--    String title,-->
+//                                           <!--    String sellPoint,-->
+//                                           <!--    Long price,-->
+//                                           <!--    Integer num,-->
+//                                           <!--    String image,-->
+//                                           <!--    Integer status,-->
+//                                           <!--    Integer priority);-->
+    @Override
+    public Integer updateProducts(String id,
+                                  String itemType,
+                                  String title,
+                                  String sellPoint,
+                                  Long price,
+                                  Integer num,
+                                  String image,
+                                  Integer status,
+                                  Integer priority) {
+        Integer row=productMapper.updateproducts(id,itemType,title,sellPoint,price,num,image,status,priority);
+        return row;
+
+    }
 
 
 }
